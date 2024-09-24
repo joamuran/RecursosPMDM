@@ -1,13 +1,13 @@
 package com.pmdm.ieseljust.comptador
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
 import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-
 
 class MainActivity : AppCompatActivity() {
 
@@ -16,6 +16,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+
         setContentView(R.layout.activity_main)
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
@@ -26,6 +27,8 @@ class MainActivity : AppCompatActivity() {
 
         // Referencia al TextView
         val textViewContador=findViewById<TextView>(R.id.textViewComptador)
+        // Referencia al boto d'Open
+        val btOpen=findViewById<Button>(R.id.btOpen)
 
         // Inicialitzem el TextView amb el comptador a 0
         textViewContador.text=comptador.toString() // Estem fent una assignacio directament o accedinta algun metode?
@@ -40,6 +43,20 @@ class MainActivity : AppCompatActivity() {
             comptador++
             textViewContador.text=comptador.toString()
         }
+
+        /*btOpen.setOnClickListener{
+            val intent = Intent(baseContext, MostraComptadorActivity::class.java)
+            intent.putExtra("comptador", comptador)
+            startActivity(intent)
+        }*/
+
+        btOpen.setOnClickListener {
+            Intent(baseContext, MostraComptadorActivity::class.java).apply {
+                putExtra("comptador", comptador)
+                startActivity(this)
+            }
+        }
+
 
     }
 }

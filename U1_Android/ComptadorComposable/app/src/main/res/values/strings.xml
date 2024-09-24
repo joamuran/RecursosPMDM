@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">ComptadorComposable</string>
+    <string name="title_activity_mostra_comptador">MostraComptadorActivity</string>
+</resources>
